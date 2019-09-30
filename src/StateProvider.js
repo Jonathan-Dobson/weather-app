@@ -157,7 +157,7 @@ class StateProvider extends React.Component {
             case 'GET CITY FROM COORDINATES': {
                 const {lat,lng} = props
                 return new Promise((resolve,reject)=>{
-                    return axios.get(`http://geofinder.fromjon.com/locate?lat=${lat}&lng=${lng}`)
+                    return axios.get(`/locate?lat=${lat}&lng=${lng}`)
                     .then(res=>resolve(res.data))
                     .catch(e=>reject(`get city error: ${e}`))             
                 })
