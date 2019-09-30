@@ -7,15 +7,6 @@ const port = 3006;
 
 app.use(cors())
 
-app.use(express.static(path.join(__dirname, ".", "build")))
-
-
-
-
-
-
-
-app.get('/', (req, res) => res.send('Hello World!'))
 
 app.get('/locate', (req, res) => {
     res.json(closestCity(req.query))
@@ -66,8 +57,9 @@ function closestCity({lat,lng}){
     }
 }
 
+app.use(express.static(path.join(__dirname, ".", "build")))
 
-app.get("*", (req, res) => {
+app.get("/weather", (req, res) => {
     res.sendFile(path.join(__dirname, ".", "build", "index.html"));
 });
 
